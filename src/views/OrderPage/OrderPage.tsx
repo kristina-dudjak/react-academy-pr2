@@ -2,7 +2,12 @@
 import React, { useState } from 'react';
 import Topping from 'modules/order/models/Topping';
 import ToppingItem from 'modules/order/components/ToppingItem/ToppingItem';
-import { css } from '@emotion/react';
+import {
+  wrapper,
+  title,
+  toppingsContainer,
+  totalPrice,
+} from './OrderPage.styles';
 
 const OrderPage: React.FC = () => {
   const [price, setPrice] = useState(0.0);
@@ -11,10 +16,10 @@ const OrderPage: React.FC = () => {
     { name: 'Chilli', emoji: '🌶', price: 1 } as Topping,
     { name: 'Corn', emoji: '🌽', price: 1 } as Topping,
     { name: 'Egg', emoji: '🥚', price: 1 } as Topping,
-    { name: 'Pineapple', emoji: '🍍', price: 1 } as Topping,
-    { name: 'Meat', emoji: '🍢', price: 1 } as Topping,
-    { name: 'Shrooms', emoji: '🍄', price: 1 } as Topping,
-    { name: 'Bacon', emoji: '🥓', price: 1 } as Topping,
+    { name: 'Pineapple', emoji: '🍍', price: 2 } as Topping,
+    { name: 'Meat', emoji: '🍢', price: 4 } as Topping,
+    { name: 'Shrooms', emoji: '🍄', price: 2 } as Topping,
+    { name: 'Bacon', emoji: '🥓', price: 2 } as Topping,
   ];
 
   const onSelectTopping = (topping: Topping, selected: boolean) => {
@@ -30,36 +35,10 @@ const OrderPage: React.FC = () => {
   ));
 
   return (
-    <div
-      css={css`
-        max-width: 800px;
-        margin: 0 auto;
-        //background-color: #e5e5e5;
-      `}
-    >
-      <span
-        css={css`
-          font-size: 40px;
-        `}
-      >
-        Toppings! Toppings!
-      </span>
-      <div
-        css={css`
-          display: flex;
-          justify-content: space-between;
-        `}
-      >
-        {toppingComponents}
-      </div>
-      <div
-        css={css`
-          text-align: center;
-          padding: 10px;
-        `}
-      >
-        Total price +${price}
-      </div>
+    <div css={wrapper}>
+      <span css={title}>Toppings! Toppings!</span>
+      <div css={toppingsContainer}>{toppingComponents}</div>
+      <div css={totalPrice}>Total price +${price}</div>
     </div>
   );
 };
