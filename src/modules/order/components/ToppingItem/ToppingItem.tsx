@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from 'react';
-import Topping from 'modules/order/models/Topping';
-import { emoji, name, toppingContainer } from './ToppingItem.styles';
+import * as Style from './ToppingItem.styles';
+import Topping from '../../models/Topping';
 
 interface ToppingItemProps {
   topping: Topping;
   onSelect: (topping: Topping, selected: boolean) => void;
 }
 
-const ToppingItem: React.FC<ToppingItemProps> = (props) => {
+export const ToppingItem: React.FC<ToppingItemProps> = (props) => {
   const topping = props.topping;
 
   const [selected, setSelected] = useState(false);
@@ -19,11 +19,11 @@ const ToppingItem: React.FC<ToppingItemProps> = (props) => {
   }
 
   return (
-    <div onClick={onSelect} css={toppingContainer(selected)}>
-      <div css={emoji}>{topping.emoji}</div>
-      <div css={name}>{topping.name}</div>
+    <div onClick={onSelect} css={Style.toppingContainer(selected)}>
+      <div css={Style.emoji}>{topping.emoji}</div>
+      <div css={Style.name}>{topping.name}</div>
     </div>
   );
 };
 
-export default ToppingItem;
+export default {};

@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 export function toppingContainer(selected: boolean) {
   return css({
     border: '1px solid #f2f2f',
-    boxShadow: '0px 12px 16px rgb(0 0 0 / 0.2)',
+    boxShadow: '0px 12px 16px rgb(0 0 0 / 0.1)',
     borderRadius: '56px',
     padding: '8px 8px 28px',
     textAlign: 'center',

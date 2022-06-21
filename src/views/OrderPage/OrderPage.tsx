@@ -1,13 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from 'react';
+import * as Style from './index';
+import { Header } from '../../shared/components';
+import * as Components from '../../modules/order';
 import Topping from 'modules/order/models/Topping';
-import ToppingItem from 'modules/order/components/ToppingItem/ToppingItem';
-import {
-  wrapper,
-  title,
-  toppingsContainer,
-  totalPrice,
-} from './OrderPage.styles';
 
 const OrderPage: React.FC = () => {
   const [price, setPrice] = useState(0.0);
@@ -31,14 +27,24 @@ const OrderPage: React.FC = () => {
   };
 
   const toppingComponents = toppings.map((e) => (
-    <ToppingItem topping={e} onSelect={onSelectTopping} key={e.name} />
+    <Components.ToppingItem
+      topping={e}
+      onSelect={onSelectTopping}
+      key={e.name}
+    />
   ));
 
   return (
-    <div css={wrapper}>
-      <span css={title}>Toppings! Toppings!</span>
-      <div css={toppingsContainer}>{toppingComponents}</div>
-      <div css={totalPrice}>Total price +${price}</div>
+    <div css={Style.wrapper}>
+      <Header />
+      <div css={Style.title}>Toppings! Toppings!</div>
+      <div css={Style.toppingsContainer}>{toppingComponents}</div>
+      <div css={Style.totalPrice}>Total price +${price}</div>
+      <div css={Style.title}>Pizza! Pizza! size</div>
+      <Components.PizzaSizePicker />
+      <div css={Style.title}>Get the discount</div>
+      <Components.DiscountContainer />
+      <Components.OrderCheckout />
     </div>
   );
 };
