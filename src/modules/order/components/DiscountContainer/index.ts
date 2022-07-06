@@ -1,1 +1,1 @@
-export * from './DiscountContainer.styles';
+export * from './DiscountContainer';

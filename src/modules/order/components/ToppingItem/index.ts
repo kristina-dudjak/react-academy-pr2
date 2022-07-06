@@ -1,1 +1,1 @@
-export * from './ToppingItem.styles';
+export * from './ToppingItem';

@@ -1,1 +1,1 @@
-export * from './PizzaSizePicker.styles';
+export * from './PizzaSizePicker';

@@ -1,22 +1,27 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from 'react';
-import * as Style from './index';
-import { Header } from '../../shared/components';
-import * as Components from '../../modules/order';
-import Topping from 'modules/order/models/Topping';
+import styles from './OrderPage.styles';
+import { Header } from 'shared';
+import {
+  DiscountContainer,
+  OrderCheckout,
+  PizzaSizePicker,
+  ToppingItem,
+} from 'modules';
+import { Topping } from 'data';
 
-const OrderPage: React.FC = () => {
-  const [price, setPrice] = useState(0.0);
+const toppings: Topping[] = [
+  { name: 'Chilli', emoji: '🌶', price: 1 },
+  { name: 'Corn', emoji: '🌽', price: 1 },
+  { name: 'Egg', emoji: '🥚', price: 1 },
+  { name: 'Pineapple', emoji: '🍍', price: 2 },
+  { name: 'Meat', emoji: '🍢', price: 4 },
+  { name: 'Shrooms', emoji: '🍄', price: 2 },
+  { name: 'Bacon', emoji: '🥓', price: 2 },
+];
 
-  const toppings = [
-    { name: 'Chilli', emoji: '🌶', price: 1 } as Topping,
-    { name: 'Corn', emoji: '🌽', price: 1 } as Topping,
-    { name: 'Egg', emoji: '🥚', price: 1 } as Topping,
-    { name: 'Pineapple', emoji: '🍍', price: 2 } as Topping,
-    { name: 'Meat', emoji: '🍢', price: 4 } as Topping,
-    { name: 'Shrooms', emoji: '🍄', price: 2 } as Topping,
-    { name: 'Bacon', emoji: '🥓', price: 2 } as Topping,
-  ];
+export const OrderPage: React.FC = () => {
+  const [price, setPrice] = useState(0);
 
   const onSelectTopping = (topping: Topping, selected: boolean) => {
     if (selected) {
@@ -27,25 +32,20 @@ const OrderPage: React.FC = () => {
   };
 
   const toppingComponents = toppings.map((e) => (
-    <Components.ToppingItem
-      topping={e}
-      onSelect={onSelectTopping}
-      key={e.name}
-    />
+    <ToppingItem topping={e} onSelect={onSelectTopping} key={e.name} />
   ));
 
   return (
-    <div css={Style.wrapper}>
+    <div css={styles.wrapper}>
       <Header />
-      <div css={Style.title}>Toppings! Toppings!</div>
-      <div css={Style.toppingsContainer}>{toppingComponents}</div>
-      <div css={Style.totalPrice}>Total price +${price}</div>
-      <div css={Style.title}>Pizza! Pizza! size</div>
-      <Components.PizzaSizePicker />
-      <div css={Style.title}>Get the discount</div>
-      <Components.DiscountContainer />
-      <Components.OrderCheckout />
+      <div css={styles.title}>Toppings! Toppings!</div>
+      <div css={styles.toppingsContainer}>{toppingComponents}</div>
+      <div css={styles.totalPrice}>Total price +${price}</div>
+      <div css={styles.title}>Pizza! Pizza! size</div>
+      <PizzaSizePicker />
+      <div css={styles.title}>Get the discount</div>
+      <DiscountContainer />
+      <OrderCheckout />
     </div>
   );
 };
-export default OrderPage;

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export const discountContainer = css({
+const discountContainer = css({
   display: 'flex',
   justifyContent: 'space-between',
   padding: '8px',
@@ -9,14 +9,14 @@ export const discountContainer = css({
   borderRadius: '56px',
 });
 
-export const discountCode = css({
+const discountCode = css({
   color: '#8c8c8c',
   fontSize: '16px',
   alignSelf: 'center',
   margin: '0px 24px',
 });
 
-export const discountButton = css({
+const discountButton = css({
   fontSize: '16px',
   border: '1px solid #dbdbdb',
   borderRadius: '32px',
@@ -25,3 +25,5 @@ export const discountButton = css({
   backgroundColor: '#ececf3',
   color: '#383838',
 });
+
+export default { discountContainer, discountCode, discountButton };

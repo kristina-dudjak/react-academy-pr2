@@ -1,26 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import * as Style from './OrderCheckout.styles';
-import pizzaSlice from '../../../../shared/images/pizzaSlice.png';
+import styles from './OrderCheckout.styles';
+import pizzaSlice from '../../../../assets/order/pizzaSlice.png';
 
 export const OrderCheckout: React.FC = () => {
   return (
-    <div css={Style.checkoutContainer}>
+    <div css={styles.checkoutContainer}>
       <img src={pizzaSlice}></img>
-      <div css={Style.orderInfo}>
-        <div css={Style.quantityContainer}>
-          <span css={Style.quantity}>1</span>
-          <span css={Style.orderText}>Qty</span>
+      <div css={styles.orderInfo}>
+        <div css={styles.quantityContainer}>
+          <span css={styles.quantity}>1</span>
+          <span css={styles.orderText}>Qty</span>
         </div>
-        <line css={Style.line}></line>
-        <div css={Style.priceContainer}>
-          <span css={Style.price}>$22.50</span>
-          <span css={Style.orderText}>Order total</span>
+        <div css={styles.line}></div>
+        <div css={styles.priceContainer}>
+          <span css={styles.price}>$22.50</span>
+          <span css={styles.orderText}>Order total</span>
         </div>
       </div>
-      <button css={Style.checkoutButton}>Buy Pizza! Pizza!</button>
+      <button css={styles.checkoutButton}>Buy Pizza! Pizza!</button>
     </div>
   );
 };
-
-export default {};

@@ -1,1 +1,1 @@
-export * from '../OrderPage/OrderPage.styles';
+export * from './OrderPage';

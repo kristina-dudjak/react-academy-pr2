@@ -1,14 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
-import * as Style from './index';
+import styles from './DiscountContainer.styles';
 
 export const DiscountContainer: React.FC = () => {
   return (
-    <div css={Style.discountContainer}>
-      <span css={Style.discountCode}>Enter discount code</span>
-      <button css={Style.discountButton}>Apply</button>
+    <div css={styles.discountContainer}>
+      <span css={styles.discountCode}>Enter discount code</span>
+      <button css={styles.discountButton}>Apply</button>
     </div>
   );
 };
-
-export default {};

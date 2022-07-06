@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export const checkoutContainer = css({
+const checkoutContainer = css({
   display: 'flex',
   justifyContent: 'space-evenly',
   border: '1px solid #F2F2F2',
@@ -8,13 +8,13 @@ export const checkoutContainer = css({
   margin: '0px',
 });
 
-export const orderInfo = css({
+const orderInfo = css({
   fontSize: '16px',
   display: 'flex',
   justifyContent: 'space-evenly',
 });
 
-export const quantityContainer = css({
+const quantityContainer = css({
   fontSize: '16px',
   display: 'flex',
   flexDirection: 'column',
@@ -22,7 +22,7 @@ export const quantityContainer = css({
   alignSelf: 'center',
 });
 
-export const quantity = css({
+const quantity = css({
   fontSize: '16px',
   backgroundColor: '#ececf3',
   borderRadius: '20px',
@@ -30,7 +30,7 @@ export const quantity = css({
   alignSelf: 'center',
 });
 
-export const orderText = css({
+const orderText = css({
   fontSize: '12px',
   alignSelf: 'center',
   color: '#b9b9b9',
@@ -38,7 +38,7 @@ export const orderText = css({
   margin: '4px',
 });
 
-export const priceContainer = css({
+const priceContainer = css({
   fontSize: '16px',
   display: 'flex',
   flexDirection: 'column',
@@ -46,19 +46,19 @@ export const priceContainer = css({
   alignSelf: 'center',
 });
 
-export const price = css({
+const price = css({
   fontSize: '32px',
   color: '#b95de4',
   alignSelf: 'center',
   fontWeight: '800',
 });
 
-export const line = css({
+const line = css({
   border: '1px dashed #DBDBDB',
   margin: '84px 0px',
 });
 
-export const checkoutButton = css({
+const checkoutButton = css({
   fontSize: '16px',
   border: '1px solid #b95de4',
   borderRadius: '48px',
@@ -68,3 +68,15 @@ export const checkoutButton = css({
   color: 'white',
   margin: '68px 0px',
 });
+
+export default {
+  checkoutContainer,
+  orderInfo,
+  quantityContainer,
+  quantity,
+  orderText,
+  priceContainer,
+  price,
+  line,
+  checkoutButton,
+};

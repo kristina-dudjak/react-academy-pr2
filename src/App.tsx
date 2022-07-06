@@ -1,12 +1,5 @@
-import React from 'react';
-import OrderPage from 'views/OrderPage';
+import { OrderPage } from 'views';
 
-function App() {
-  return (
-    <div>
-      <OrderPage />
-    </div>
-  );
+export function App() {
+  return <OrderPage />;
 }
-
-export default App;

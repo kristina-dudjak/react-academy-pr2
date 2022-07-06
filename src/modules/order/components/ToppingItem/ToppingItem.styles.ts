@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export function toppingContainer(selected: boolean) {
+function toppingContainer(selected: boolean) {
   return css({
     border: '1px solid #f2f2f',
     boxShadow: '0px 12px 16px rgb(0 0 0 / 0.1)',
@@ -12,7 +12,7 @@ export function toppingContainer(selected: boolean) {
   });
 }
 
-export const emoji = css({
+const emoji = css({
   backgroundColor: 'rgb(255 255 255 / 0.3)',
   boxShadow: '0px 12px 28px rgb(0 0 0 / 0.01)',
   width: '76px',
@@ -22,7 +22,9 @@ export const emoji = css({
   lineHeight: '4.5',
 });
 
-export const name = css({
+const name = css({
   alignSelf: 'center',
   padding: '10px 0px 0px',
 });
+
+export default { toppingContainer, emoji, name };

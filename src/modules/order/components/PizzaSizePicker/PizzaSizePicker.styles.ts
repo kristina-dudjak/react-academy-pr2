@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export const pizzaSizeContainer = css({
+const pizzaSizeContainer = css({
   display: 'flex',
   justifyContent: 'space-evenly',
   padding: '24px 0px',
@@ -10,7 +10,9 @@ export const pizzaSizeContainer = css({
   textAlign: 'center',
 });
 
-export const pizzaSize = css({
+const pizzaSize = css({
   color: '#8c8c8c',
   fontSize: '16px',
 });
+
+export default { pizzaSizeContainer, pizzaSize };

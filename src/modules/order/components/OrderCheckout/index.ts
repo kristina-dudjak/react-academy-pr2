@@ -1,1 +1,1 @@
-export * from './OrderCheckout.styles';
+export * from './OrderCheckout';
