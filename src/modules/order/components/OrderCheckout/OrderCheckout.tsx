@@ -3,18 +3,31 @@ import React from 'react';
 import styles from './OrderCheckout.styles';
 import pizzaSlice from '../../../../assets/order/pizzaSlice.png';
 
-export const OrderCheckout: React.FC = () => {
+interface OrderCheckoutProps {
+  finalPrice: number;
+  onQuantity: (quantity: number) => void;
+}
+
+export const OrderCheckout: React.FC<OrderCheckoutProps> = (props) => {
   return (
     <div css={styles.checkoutContainer}>
       <img src={pizzaSlice}></img>
       <div css={styles.orderInfo}>
-        <div css={styles.quantityContainer}>
-          <span css={styles.quantity}>1</span>
+        <div css={styles.orderInfoContainer}>
+          <input
+            type="number"
+            defaultValue={1}
+            min={1}
+            css={styles.quantity}
+            onChange={(e) => {
+              props.onQuantity(parseInt(e.target.value));
+            }}
+          />
           <span css={styles.orderText}>Qty</span>
         </div>
         <div css={styles.line}></div>
-        <div css={styles.priceContainer}>
-          <span css={styles.price}>$22.50</span>
+        <div css={styles.orderInfoContainer}>
+          <span css={styles.price}>${props.finalPrice}</span>
           <span css={styles.orderText}>Order total</span>
         </div>
       </div>

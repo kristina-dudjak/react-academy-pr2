@@ -10,10 +10,13 @@ const discountContainer = css({
 });
 
 const discountCode = css({
-  color: '#8c8c8c',
+  color: '#383838',
   fontSize: '16px',
-  alignSelf: 'center',
-  margin: '0px 24px',
+  margin: '4px 24px',
+  padding: '8px',
+  border: '1px solid #ececf3',
+  borderRadius: '32px',
+  backgroundColor: '#ececf3',
 });
 
 const discountButton = css({

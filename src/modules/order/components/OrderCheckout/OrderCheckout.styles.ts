@@ -5,7 +5,7 @@ const checkoutContainer = css({
   justifyContent: 'space-evenly',
   border: '1px solid #F2F2F2',
   borderRadius: '56px',
-  margin: '0px',
+  margin: '12px 0px 0px 0px',
 });
 
 const orderInfo = css({
@@ -14,11 +14,11 @@ const orderInfo = css({
   justifyContent: 'space-evenly',
 });
 
-const quantityContainer = css({
+const orderInfoContainer = css({
   fontSize: '16px',
   display: 'flex',
   flexDirection: 'column',
-  margin: '0px 20px 0px 0px',
+  margin: '0px 20px',
   alignSelf: 'center',
 });
 
@@ -26,8 +26,10 @@ const quantity = css({
   fontSize: '16px',
   backgroundColor: '#ececf3',
   borderRadius: '20px',
-  padding: '8px 24px',
-  alignSelf: 'center',
+  color: '#383838',
+  padding: '8px',
+  width: '40px',
+  border: '1px solid #ececf3',
 });
 
 const orderText = css({
@@ -38,14 +40,6 @@ const orderText = css({
   margin: '4px',
 });
 
-const priceContainer = css({
-  fontSize: '16px',
-  display: 'flex',
-  flexDirection: 'column',
-  margin: '0px 20px',
-  alignSelf: 'center',
-});
-
 const price = css({
   fontSize: '32px',
   color: '#b95de4',
@@ -54,7 +48,7 @@ const price = css({
 });
 
 const line = css({
-  border: '1px dashed #DBDBDB',
+  border: '1px dashed #dbdbdb',
   margin: '84px 0px',
 });
 
@@ -72,10 +66,9 @@ const checkoutButton = css({
 export default {
   checkoutContainer,
   orderInfo,
-  quantityContainer,
+  orderInfoContainer,
   quantity,
   orderText,
-  priceContainer,
   price,
   line,
   checkoutButton,

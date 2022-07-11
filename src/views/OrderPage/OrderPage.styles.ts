@@ -23,4 +23,27 @@ const totalPrice = css({
   textAlign: 'center',
 });
 
-export default { wrapper, title, toppingsContainer, totalPrice };
+const button = css({
+  fontSize: '16px',
+  border: '1px solid #dbdbdb',
+  borderRadius: '36px',
+  padding: '8px 24px',
+  cursor: 'pointer',
+  color: 'white',
+  margin: 'auto',
+  backgroundColor: '#b95de4',
+});
+
+const tipContainer = css({
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+export default {
+  wrapper,
+  title,
+  toppingsContainer,
+  totalPrice,
+  button,
+  tipContainer,
+};

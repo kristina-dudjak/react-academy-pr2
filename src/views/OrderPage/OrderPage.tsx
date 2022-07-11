@@ -6,28 +6,30 @@ import {
   DiscountContainer,
   OrderCheckout,
   PizzaSizePicker,
+  TipCounter,
   ToppingItem,
 } from 'modules';
-import { Topping } from 'data';
-
-const toppings: Topping[] = [
-  { name: 'Chilli', emoji: '🌶', price: 1 },
-  { name: 'Corn', emoji: '🌽', price: 1 },
-  { name: 'Egg', emoji: '🥚', price: 1 },
-  { name: 'Pineapple', emoji: '🍍', price: 2 },
-  { name: 'Meat', emoji: '🍢', price: 4 },
-  { name: 'Shrooms', emoji: '🍄', price: 2 },
-  { name: 'Bacon', emoji: '🥓', price: 2 },
-];
+import { pizzas, Topping, toppings } from 'data';
+import { useFinalPriceCalculator } from 'hooks';
 
 export const OrderPage: React.FC = () => {
-  const [price, setPrice] = useState(0);
+  const [toppingsPrice, setToppingsPrice] = useState(0);
+  const [mounted, setMounted] = useState(true);
+  const [selectedPizza, setSelectedPizza] = useState(pizzas[1]);
+  const [discountPercentage, setDiscountPercentage] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const finalPrice = useFinalPriceCalculator(
+    selectedPizza.price,
+    toppingsPrice,
+    discountPercentage,
+    quantity,
+  );
 
   const onSelectTopping = (topping: Topping, selected: boolean) => {
     if (selected) {
-      setPrice(price + topping.price);
+      setToppingsPrice(toppingsPrice + topping.price);
     } else {
-      setPrice(price - topping.price);
+      setToppingsPrice(toppingsPrice - topping.price);
     }
   };
 
@@ -40,12 +42,23 @@ export const OrderPage: React.FC = () => {
       <Header />
       <div css={styles.title}>Toppings! Toppings!</div>
       <div css={styles.toppingsContainer}>{toppingComponents}</div>
-      <div css={styles.totalPrice}>Total price +${price}</div>
+      <div css={styles.totalPrice}>Total price +${toppingsPrice}</div>
       <div css={styles.title}>Pizza! Pizza! size</div>
-      <PizzaSizePicker />
+      <PizzaSizePicker
+        selectedPizza={selectedPizza}
+        onSelectedPizza={setSelectedPizza}
+      />
       <div css={styles.title}>Get the discount</div>
-      <DiscountContainer />
-      <OrderCheckout />
+      <DiscountContainer onDiscount={setDiscountPercentage} />
+      {mounted && (
+        <div css={styles.tipContainer}>
+          <TipCounter />
+          <button css={styles.button} onClick={() => setMounted(false)}>
+            Leave a tip
+          </button>
+        </div>
+      )}
+      <OrderCheckout finalPrice={finalPrice} onQuantity={setQuantity} />
     </div>
   );
 };
