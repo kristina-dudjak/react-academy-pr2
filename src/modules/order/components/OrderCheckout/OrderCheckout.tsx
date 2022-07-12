@@ -8,7 +8,10 @@ interface OrderCheckoutProps {
   onQuantity: (quantity: number) => void;
 }
 
-export const OrderCheckout: React.FC<OrderCheckoutProps> = (props) => {
+export const OrderCheckout: React.FC<OrderCheckoutProps> = ({
+  finalPrice,
+  onQuantity,
+}) => {
   return (
     <div css={styles.checkoutContainer}>
       <img src={pizzaSlice}></img>
@@ -20,14 +23,14 @@ export const OrderCheckout: React.FC<OrderCheckoutProps> = (props) => {
             min={1}
             css={styles.quantity}
             onChange={(e) => {
-              props.onQuantity(parseInt(e.target.value));
+              onQuantity(parseInt(e.target.value));
             }}
           />
           <span css={styles.orderText}>Qty</span>
         </div>
         <div css={styles.line}></div>
         <div css={styles.orderInfoContainer}>
-          <span css={styles.price}>${props.finalPrice}</span>
+          <span css={styles.price}>${finalPrice}</span>
           <span css={styles.orderText}>Order total</span>
         </div>
       </div>

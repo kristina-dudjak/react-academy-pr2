@@ -7,15 +7,17 @@ interface DiscountContainerProps {
   onDiscount: (percentage: number) => void;
 }
 
-export const DiscountContainer: React.FC<DiscountContainerProps> = (props) => {
+export const DiscountContainer: React.FC<DiscountContainerProps> = ({
+  onDiscount,
+}) => {
   const [input, setInput] = useState('');
 
   function applyCode() {
     const discount = discounts.find((discount) => discount.code === input);
     if (discount) {
-      props.onDiscount(discount.discountPercentage);
+      onDiscount(discount.discountPercentage);
     } else {
-      props.onDiscount(0);
+      onDiscount(0);
     }
   }
 

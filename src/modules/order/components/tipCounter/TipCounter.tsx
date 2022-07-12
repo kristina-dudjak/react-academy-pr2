@@ -7,7 +7,6 @@ export const TipCounter: React.FC = () => {
   const [tip, setTip] = useState(0);
   const tipRef = useRef(0);
   const [tempTip, setTempTip] = useState(0);
-  const [recommendedTip, setRecommendedTip] = useState(0);
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
@@ -25,12 +24,10 @@ export const TipCounter: React.FC = () => {
 
   function recommend() {
     for (let i = 0; i < 1000000000; i++) {}
-    setRecommendedTip(tempTip);
+    return tempTip;
   }
 
-  useMemo(() => {
-    return recommend();
-  }, [clicked]);
+  const maxTip = useMemo(() => recommend(), [clicked]);
 
   return (
     <div css={styles.tipContainer}>
@@ -51,7 +48,7 @@ export const TipCounter: React.FC = () => {
       <button css={styles.button} onClick={() => setClicked(true)}>
         Recommend tip
       </button>
-      {clicked && <RandomTip maxTip={recommendedTip} />}
+      {clicked && <RandomTip maxTip={maxTip} />}
     </div>
   );
 };
