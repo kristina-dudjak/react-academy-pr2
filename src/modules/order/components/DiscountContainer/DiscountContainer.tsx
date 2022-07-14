@@ -1,23 +1,20 @@
 /** @jsxImportSource @emotion/react */
-import { discounts } from 'data';
 import React, { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import styles from './DiscountContainer.styles';
+import { discounts } from 'data';
+import { pizzaAtoms } from 'modules/order/state/atoms';
 
-interface DiscountContainerProps {
-  onDiscount: (percentage: number) => void;
-}
-
-export const DiscountContainer: React.FC<DiscountContainerProps> = ({
-  onDiscount,
-}) => {
+export const DiscountContainer: React.FC = () => {
   const [input, setInput] = useState('');
+  const setDiscount = useSetRecoilState(pizzaAtoms.discount);
 
   function applyCode() {
     const discount = discounts.find((discount) => discount.code === input);
     if (discount) {
-      onDiscount(discount.discountPercentage);
+      setDiscount(discount.discountPercentage);
     } else {
-      onDiscount(0);
+      setDiscount(0);
     }
   }
 

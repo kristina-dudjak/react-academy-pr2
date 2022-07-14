@@ -1,5 +1,10 @@
+import { RecoilRoot } from 'recoil';
 import { OrderPage } from 'views';
 
 export function App() {
-  return <OrderPage />;
+  return (
+    <RecoilRoot>
+      <OrderPage />
+    </RecoilRoot>
+  );
 }

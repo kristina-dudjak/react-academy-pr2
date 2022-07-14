@@ -1,24 +1,35 @@
 /** @jsxImportSource @emotion/react */
 import { Pizza } from 'data';
-import React from 'react';
+import { pizzaAtoms, pizzaSelector } from 'modules/order/state';
+import React, { useEffect, useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styles from './PizzaSizeItem.styles';
 
 interface PizzaSizeItemProps {
   pizza: Pizza;
-  selected: boolean;
-  onSelect: (pizza: Pizza, selected: boolean) => void;
 }
 
-export const PizzaSizeItem: React.FC<PizzaSizeItemProps> = (props) => {
-  const pizza = props.pizza;
-  const selected = props.selected;
+export const PizzaSizeItem: React.FC<PizzaSizeItemProps> = ({ pizza }) => {
+  const setPizzaSize = useSetRecoilState(pizzaAtoms.pizzaSize);
+  const setPizzaPrice = useSetRecoilState(pizzaAtoms.pizzaPrice);
+  const selectedPizza = useRecoilValue(pizzaSelector.pizza);
+  const [selected, setSelected] = useState(false);
 
-  function onSelect() {
-    props.onSelect(pizza, !selected);
-  }
+  useEffect(() => {
+    if (pizza.size === selectedPizza.size) {
+      setSelected(true);
+    } else {
+      setSelected(false);
+    }
+  }, [selectedPizza]);
+
+  const onSelectSize = () => {
+    setPizzaSize(pizza.size);
+    setPizzaPrice(pizza.price);
+  };
 
   return (
-    <div onClick={onSelect} css={styles.pizzaItemContainer(selected)}>
+    <div onClick={onSelectSize} css={styles.pizzaItemContainer(selected)}>
       <div css={styles.size(selected)}>{pizza.size}</div>
     </div>
   );
