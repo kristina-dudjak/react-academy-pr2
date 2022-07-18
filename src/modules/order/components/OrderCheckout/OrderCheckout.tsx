@@ -19,7 +19,7 @@ export const OrderCheckout: React.FC = () => {
             min={1}
             css={styles.quantity}
             onChange={(e) => {
-              setQuantity(parseInt(e.target.value));
+              setQuantity(parseInt(e.currentTarget.value));
             }}
           />
           <span css={styles.orderText}>Qty</span>

@@ -5,8 +5,11 @@ import React from 'react';
 import styles from './PizzaSizePicker.styles';
 
 export const PizzaSizePicker: React.FC = () => {
-  const pizzaSizeComponents = pizzas.map((pizza) => (
-    <PizzaSizeItem pizza={pizza} key={pizza.size} />
-  ));
-  return <div css={styles.pizzaSizeContainer}>{pizzaSizeComponents}</div>;
+  return (
+    <div css={styles.pizzaSizeContainer}>
+      {pizzas.map((pizza) => (
+        <PizzaSizeItem pizza={pizza} key={pizza.size} />
+      ))}
+    </div>
+  );
 };

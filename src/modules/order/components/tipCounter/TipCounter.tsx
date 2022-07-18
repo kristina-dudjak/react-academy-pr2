@@ -41,7 +41,7 @@ export const TipCounter: React.FC = () => {
         css={styles.maxTipInput}
         placeholder="Enter max tip"
         onChange={(e) => {
-          setTempTip(parseInt(e.target.value));
+          setTempTip(parseInt(e.currentTarget.value));
           setClicked(false);
         }}
       />
