@@ -1,7 +1,10 @@
-import React from 'react';
+import { RecoilRoot } from 'recoil';
+import { OrderPage } from 'views';
 
-function App() {
-  return <div></div>;
+export function App() {
+  return (
+    <RecoilRoot>
+      <OrderPage />
+    </RecoilRoot>
+  );
 }
-
-export default App;
